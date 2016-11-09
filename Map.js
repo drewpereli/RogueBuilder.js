@@ -10,6 +10,16 @@ function Map(width, height)
 }
 
 
+
+
+
+Map.prototype.getTile = function(x, y)
+{
+	return this.tiles[x][y];
+}
+
+
+
 Map.prototype.initialize = function()
 {
 	for (var x = 0 ; x < this.width ; x++)
@@ -20,10 +30,4 @@ Map.prototype.initialize = function()
 			this.tiles.push(new Tile(x, y, "OPEN"));
 		}
 	}
-}
-
-
-Map.prototype.getTile = function(x, y)
-{
-	return this.tiles[x][y];
 }

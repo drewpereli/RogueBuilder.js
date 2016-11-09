@@ -7,6 +7,8 @@ function View()
 	this.cells = {};
 	this.canvases = {};
 	this.ctxs = {};
+	this.topLeftX = 0; //X coordinate of the tile in the top left corner
+	this.topLeftY = 0; //Y coordinate of the tile in the top left corner
 	this.initialize();
 }
 
@@ -18,8 +20,27 @@ function View()
 
 View.prototype.set = function()
 {
-	//For each cell, if the corresponding tile has changed, 
+	//For each cell array 
+	//cell, if the corresponding tile has changed, set it
+	for (var cellArrayName in this.cells)
+	{
+		var cellArray = this.cells[cellArrayName];
+		for (var x in cellArray)
+		{
+			for (var y in cellArray[x])
+			{
+				var cell = cellArray[x][y];
+				var tile = cell.getCorrespondingTile();
+				if (tile && tile.changed) //If it's a valid tile that has changed
+				{
+					cell.set(tile); //Set the cell based on the tile
+				}
+			}
+		}
+	}
 }
+
+
 
 
 

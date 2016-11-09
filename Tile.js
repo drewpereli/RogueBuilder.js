@@ -4,7 +4,7 @@ function Tile(x, y, terrain)
 {
 	this.x = x;
 	this.y = y;
-	this.terrain = g.terrainTypes[terrain];
+	this.terrain = g.terrainTypes[terrain.toLowerCase()];
 	this.object = false;
 	this.changed = true;
 }

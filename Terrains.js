@@ -15,10 +15,12 @@ g.terrainTypes =
 {
 	open: 
 	{
+		name: "Open",
 	},
 
 	wall:
 	{
+		name: "Wall",
 		blocksMovement: true,
 		blocksLight: true,
 		blocksProjectiles: true,
@@ -28,11 +30,13 @@ g.terrainTypes =
 
 	stairsUp:
 	{
+		name: "Stairs Up",
 		char: "<",
 	},
 
 	stairsDown:
 	{
+		name: "Stairs Down",
 		char: ">",
 	}
 }

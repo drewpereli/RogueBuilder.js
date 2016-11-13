@@ -1,12 +1,23 @@
 
 
-function Tile(x, y, terrain)
+function Tile(x, y, terrainKey)
 {
 	this.x = x;
 	this.y = y;
-	this.terrain = g.terrainTypes[terrain.toLowerCase()];
-	this.object = false;
-	this.changed = true;
+	this.terrain = g.terrainTypes[terrainKey.toLowerCase()];
+	this.unit = false;
+	this.item = false;
+}
+
+
+Tile.prototype.setTerrain = function(terrainKey)
+{
+	if (typeof g.terrainTypes[terrainKey] !== "undefined")
+	{
+		this.terrain = g.terrainTypes[terrainKey];
+		return this;
+	}
+	return false;
 }
 
 

@@ -1,7 +1,16 @@
 
 
+g.color_constants = 
+{
+	white: "#fff",
+	black: "#000",
+	gray: "#888",
+}
+
+
 g.colors = 
 {
-	default: "white",
-	defaultBackground: "gray",
+	default: g.color_constants.white,
+	defaultBackground: g.color_constants.gray,
+	defaultBorder: "#bbb",
 }

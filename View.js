@@ -30,9 +30,9 @@ View.prototype.set = function()
 			for (var y in cellArray[x])
 			{
 				var cell = cellArray[x][y];
-				var tile = cell.getCorrespondingTile();
-				if (tile && tile.changed) //If it's a valid tile that has changed
+				if (cell.changed) //If it's a valid tile that has changed
 				{
+					var tile = cell.getCorrespondingTile();
 					cell.set(tile); //Set the cell based on the tile
 				}
 			}

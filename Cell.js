@@ -6,6 +6,7 @@ function Cell(x, y, context)
 	this.ctx = context; //Context object for this cell
 	this.xPx;
 	this.yPx;
+	this.changed = true;
 
 	this.initialize();
 }
@@ -18,18 +19,22 @@ Cell.prototype.fillRect = function(color)
 {
 	this.ctx.fillStyle = color;
 	this.ctx.fillRect(this.xPx, this.yPx, g.constants.CELL_LENGTH, g.constants.CELL_LENGTH);
+	return this;
 }
 
 
+/*
 Cell.prototype.clearRect = function()
 {
 	this.ctx.clearRect(this.xPx, this.yPx, g.constants.CELL_LENGTH, g.constants.CELL_LENGTH);
+	return this;
 }
+*/
 
 
 Cell.prototype.fillChar = function(char, color)
 {
-	
+	return this;	
 }
 
 /*
@@ -41,18 +46,21 @@ Cell.prototype.set = function(tile)
 {
 	var char;
 	var color;
-	var bgColor = tile.terrain.backgroundColor; //background color
+	var bgColor; //background color
 
-	if (tile.object)
+	if (tile)//If the cell corresponds to a tile
 	{
-		char = tile.object.char;
-		color = tile.object.color || g.colors.default;
+		char = tile.unit.char || tile.item.char || tile.terrain.char;
+		color = g.colors.default;
+		bgColor = tile.terrain.backgroundColor;
+		this.fillRect(bgColor).fillChar(char, color);
 	}
-	else
+	else //IF the cell doesn't correspond to a tile
 	{
-		char = tile.terrain.char;
+		bgColor = g.color_constants.black;
+		this.fillRect(bgColor);
 	}
-
+	this.changed = false;
 }
 
 
